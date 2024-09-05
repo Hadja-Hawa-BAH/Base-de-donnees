@@ -32,11 +32,12 @@ select distinct title from employee;
 select title from employee;
 
 -- 5. Afficher toutes les informations des salariés ayant un salaire supérieur à
-25000.
+-- 25000.
 select * from employee where salary > 25000;
 
 -- 6. Afficher le nom, le numéro d'employé et le numéro du département des
 -- employés dont le titre est « Secrétaire ».
+select last_name, id, department_id from employee  where title = 'secrétaire';
 
 -- 7. Afficher le nom et le numéro de département dont le numéro de
 -- département est supérieur à 40.
@@ -138,7 +139,7 @@ select last_name, position('r' in last_name) from employee;
 
 -- Afficher le nom, le nom en majuscule et le nom en minuscule de
 -- l'employé dont le nom est « Vrante ».
-select last_name, upper(last_name), lower(last_name) from employee where last_name ='Vrante'
+select upper(last_name), lower(last_name) from employee where last_name like 'vrante';
 
 -- 31.Afficher le nom et le nombre de caractères du nom des employés
 select last_name, length(last_name) from employee;
