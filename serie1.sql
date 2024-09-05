@@ -26,6 +26,9 @@ select department_id as "numéro de département" from employee;
 select salary as "salaire" from employee;
 
 -- 3. Afficher le titre de tous les employé.e.s
+select title from employee;
+
+-- le titre sans doublons
 select distinct title from employee;
 
 -- 4. Afficher les différentes valeurs des titres des employés
@@ -41,9 +44,9 @@ select last_name, id, department_id from employee  where title = 'secrétaire';
 
 -- 7. Afficher le nom et le numéro de département dont le numéro de
 -- département est supérieur à 40.
-select department_id from employee where department_id > 40;
-
-select  name department_id from department where region_id > 40;
+select id, "name" from department where id > 41;
+-- select department_id from employee where department_id > 40;
+-- select  name department_id from department where region_id > 40;
 
 -- 8. Afficher le nom et le prénom des employés dont le nom est alphabétiquement
 -- antérieur au prénom.
@@ -59,7 +62,6 @@ select last_name, salary, department_id from employee where title = 'représenta
 -- Représentant » ou dont le titre est « Président ».
 select last_name, title, salary from employee where title = 'représentant' or title = 'président';
 
-
 -- 11. Afficher le nom, le titre, le numéro de département, le salaire des employés du
 -- département 34, dont le titre est « Représentant » ou « Secrétaire ».
 select last_name, title, department_id, salary from employee where department_id = 34 and (title = 'représentant' or title = 'secrétaire');
@@ -67,7 +69,7 @@ select last_name, title, department_id, salary from employee where department_id
 -- 12. Afficher le nom, le titre, le numéro de département, le salaire des employés
 -- dont le titre est Représentant, ou dont le titre est « Secrétaire » dans le
 -- département numéro 34.
-select last_name, title, department_id, salary from employee where title
+select last_name, title, department_id, salary from employee where title = 'représentant' or (title = 'secrétaire' and department_id = 34);
 
 -- 13. Afficher le nom, et le salaire des employés dont le salaire est compris
 -- entre 20000 et 30000.
@@ -83,7 +85,7 @@ select last_name from employee where last_name like '%n';
 -- position.
 select last_name from employee where last_name like '__u%';
 
--- 17.Afficher le salaire et le nom des employés du service 41 classés par salaire
+-- 17.Afficher le salaire et le nom des employés du service/departement 41 classés par salaire
 -- croissant.
 select salary, last_name from employee where department_id = 41 order by salary asc;
 
@@ -118,12 +120,12 @@ select last_name,salary, commission_rate, title from employee where commission_r
 -- 25.Afficher le nom, le salaire, le taux de commission et la commission des
 -- employés dont le taux de commission n'est pas nul. (la commission est
 -- calculée en multipliant le salaire par le taux de commission).
-select last_name,salary, commission_rate, salary*commission_rate/100 title from employee where commission_rate is not null;
+select last_name,salary, commission_rate, salary*commission_rate/100, title from employee where commission_rate is not null;
 
 -- 26.Afficher le nom, le salaire, le taux de commission, la commission des
 -- employés dont le taux de commission n'est pas nul, classé par taux de
 -- commission croissant.
-select last_name,salary, commission_rate, salary*commission_rate/100 title from employee where commission_rate is not null order by commission_rate asc;
+select last_name,salary, commission_rate, salary*commission_rate/100, title from employee where commission_rate is not null order by commission_rate asc;
 
 -- 27.Afficher le nom et le prénom (concaténés) des employés. Renommer les
 -- colonnes.
@@ -136,10 +138,9 @@ select substring(last_name, 1,5) from employee;
 -- employés.
 select last_name, position('r' in last_name) from employee;
 
-
--- Afficher le nom, le nom en majuscule et le nom en minuscule de
+--30.Afficher le nom, le nom en majuscule et le nom en minuscule de
 -- l'employé dont le nom est « Vrante ».
-select upper(last_name), lower(last_name) from employee where last_name like 'vrante';
+select last_name, upper(last_name), lower(last_name) from employee where last_name like 'vrante';
 
 -- 31.Afficher le nom et le nombre de caractères du nom des employés
 select last_name, length(last_name) from employee;
