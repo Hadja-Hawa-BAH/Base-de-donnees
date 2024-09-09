@@ -129,7 +129,7 @@ select last_name,salary, commission_rate, salary*commission_rate/100, title from
 
 -- 27.Afficher le nom et le prénom (concaténés) des employés. Renommer les
 -- colonnes.
-select concat('nom', 'prenom') as NomPrénom;
+select concat('nom', ' ' ,'prenom') as NomPrénom;
 
 -- 28.Afficher les 5 premières lettres du nom des employés
 select substring(last_name, 1,5) from employee;
